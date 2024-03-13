@@ -1,0 +1,25 @@
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import requests
+
+# Функція для обробки команди /start
+def start(update, context):
+    update.message.reply_text("Привіт! Я бот для пошуку інформації за ключовими словами. Введіть /help для отримання довідки.")
+
+# Функція для обробки команди /help
+def help(update, context):
+    update.message.reply_text("Введіть слова для пошуку інформації.")
+
+# Функція для обробки текстових повідомлень
+def search(update, context):
+    query = update.message.text
+    results = search_information(query)
+    if results:
+        update.message.reply_text("Ось результати пошуку:\n" + "\n".join(results))
+    else:
+        update.message.reply_text("На жаль, нічого не знайдено за вашим запитом.")
+
+# Функція для пошуку інформації за ключовими словами (потрібно реалізувати самостійно)
+def search_information(query):
+    # Тут ви маєте реалізувати код пошуку за ключовими словами
+    # Наприклад, ви можете використовувати API для пошуку в Інтернеті
+    # Повер
